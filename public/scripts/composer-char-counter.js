@@ -1,23 +1,21 @@
-// alert("composer-char-counter connected!");
-
 $(document).ready(function() {
   // --- our code goes here ---
-
-  $(".new-tweet form textarea").on('keyup', function(){
-    let currLength = $(this).val().length;
-    let remainingChar = 140 - currLength;
-
-    let $curCount = $(this).siblings(".counter");
-    $curCount.text(remainingChar);
-
-    if (remainingChar < 0){
-      $curCount.addClass("over");
-    } else if (remainingChar >= 0){
-      $curCount.removeClass("over");
-    }
-
-  });
-
-
-
+  console.log("It's working");
 });
+
+$(document).on("keyup", ".new-tweet textarea", function() {
+    var allowedChar = 140;
+    var currentChar = this.value.length;
+    var availableChar = allowedChar - currentChar;
+    if (availableChar < 0){
+      $(this).parent().find(".counter").html(availableChar).addClass("red");
+    } else {
+      $(this).parent().find(".counter").html(availableChar).removeClass("red");
+    }  
+});
+
+
+// let count = 0;
+// $(document).on("click", ".old-tweets .fa-heart", function() {
+//   $(this).html(count += 1);
+// });

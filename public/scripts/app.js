@@ -68,8 +68,6 @@ $(document).ready(function() {
   $submit.on('click', function () {
     event.preventDefault();
     var tweet = $(this).siblings("textarea")[0].value;
-    // console.log($(this).siblings("textarea")[0].value);
-    // console.log($(this).siblings("textarea")[0].val());
 
 
     if (validateTweet(tweet)){
@@ -77,6 +75,7 @@ $(document).ready(function() {
       .then(function(item){
         loadTweets();
         $(".new-tweet textarea").val('');
+        $(".new-tweet .counter").html(140);
       })
     }
 
@@ -96,10 +95,15 @@ $(document).ready(function() {
 
   $compose = $("#compose");
   $compose.on('click', function(){
-    $(".container .new-tweet").slideToggle("normal", function(){
+    $(".container .new-tweet").slideToggle("slow", function(){
 
     });
-    $(".new-tweet textarea").focus();
+    $(".new-tweet textarea").select();
   });
 
+
+
+
+
 });
+
